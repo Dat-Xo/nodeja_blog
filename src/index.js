@@ -4,7 +4,7 @@ const morgan = require('morgan')
 const handlebars = require('express-handlebars');
 const methodOverride = require('method-override')
 const app = express()
-const port = 3000
+const port = process.env.port || 3000
 
 const route = require('./routes')
 const db = require('./config/db')
@@ -37,6 +37,7 @@ app.set('views', path.join(__dirname, 'resources','views'));
 
 //route innit
 route(app)
+
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`)
